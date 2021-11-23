@@ -8,38 +8,42 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         tools:context=".ui.Activity.MainActivity">
+
         <include
+            android:id="@+id/search_layout"
+            layout="@layout/title_view_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/search_layout"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            layout="@layout/title_view_layout"/>
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.google.android.material.tabs.TabLayout
-            app:layout_constraintTop_toBottomOf="@id/search_layout"
             android:id="@+id/tab_navigation_tl"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/search_layout" />
+
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/content_vp"
-            app:layout_constraintTop_toBottomOf="@id/tab_navigation_tl"
-            app:layout_constraintBottom_toTopOf="@id/bottom_navigation_nv"
             android:layout_width="match_parent"
-            android:layout_height="0dp"/>
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/bottom_navigation_nv"
+            app:layout_constraintTop_toBottomOf="@id/tab_navigation_tl" />
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:background="@color/white"
             android:id="@+id/bottom_navigation_nv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
             app:itemTextColor="@color/search_hint_grey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:menu="@menu/navigation_menu"/>
+            app:menu="@menu/navigation_menu" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

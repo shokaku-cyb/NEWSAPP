@@ -22,14 +22,14 @@ public class MainViewModel extends BaseViewModel {
 
     public MutableLiveData<TouTiaoBean> responseData = new MutableLiveData();
 
-    public void getmess(){
+    public void getmess() {
         apiService.getHeadline()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSuccess(new Consumer<TouTiaoBean>() {
                     @Override
                     public void accept(TouTiaoBean touTiaoBean) throws Exception {
-                            responseData.setValue(touTiaoBean);
+                        responseData.setValue(touTiaoBean);
                     }
                 })
                 .doOnError(new Consumer<Throwable>() {

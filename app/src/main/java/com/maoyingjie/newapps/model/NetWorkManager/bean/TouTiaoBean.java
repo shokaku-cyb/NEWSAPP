@@ -13,7 +13,7 @@ public class TouTiaoBean {
     public List<ChannelsDTO> channels;
 
 
-    public static class DocsDTO{
+    public static class DocsDTO {
 
         public PagerDTO pager;
         public List<FocusesDTO> focuses;

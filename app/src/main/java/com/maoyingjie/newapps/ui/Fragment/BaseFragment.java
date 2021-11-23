@@ -23,7 +23,7 @@ public abstract class BaseFragment<T extends ViewDataBinding, Y extends BaseView
     public View onCreateView(@NonNull @org.jetbrains.annotations.NotNull LayoutInflater inflater,
                              @Nullable @org.jetbrains.annotations.Nullable ViewGroup container,
                              @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        mBing = DataBindingUtil.inflate(inflater,bingLayout(),container,true);
+        mBing = DataBindingUtil.inflate(inflater, bingLayout(), container, true);
         return mBing.getRoot();
     }
 

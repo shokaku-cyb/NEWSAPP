@@ -32,10 +32,12 @@ public class HttpManager {
                 .build();
         apiService = mRetrofit.create(ApiService.class);
     }
-    private static class SingletonHolder{
+
+    private static class SingletonHolder {
         private static final HttpManager INSTANCE = new HttpManager();
     }
-    public static HttpManager getInstance(){
+
+    public static HttpManager getInstance() {
         return SingletonHolder.INSTANCE;
     }
 }

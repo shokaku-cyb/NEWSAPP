@@ -17,7 +17,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
 
     @Override
     public ViewModel getViewModel() {
-        return new ViewModelProvider(this,new ViewModelFactory()).get(MainViewModel.class);
+        return new ViewModelProvider(this, new ViewModelFactory()).get(MainViewModel.class);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         mViewModel.responseData.observe(this, new Observer<TouTiaoBean>() {
             @Override
             public void onChanged(TouTiaoBean touTiaoBean) {
-                Log.d("main",new Gson().toJson(touTiaoBean));
+                Log.d("main", new Gson().toJson(touTiaoBean));
             }
         });
     }

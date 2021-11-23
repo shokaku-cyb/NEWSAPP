@@ -5,7 +5,7 @@ import com.maoyingjie.newapps.databinding.FragmentListBinding;
 import com.maoyingjie.newapps.ViewModel.RecyclerViewFragmentViewModel;
 
 public class RecyclerViewFragment extends BaseFragment<FragmentListBinding,
-        RecyclerViewFragmentViewModel>{
+        RecyclerViewFragmentViewModel> {
 
     @Override
     public int bingLayout() {

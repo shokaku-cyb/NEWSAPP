@@ -17,8 +17,9 @@ public class FilletImageView extends AppCompatImageView {
     public FilletImageView(@NonNull @NotNull Context context) {
         super(context);
     }
-    public FilletImageView(Context context, AttributeSet attr){
-        super(context,attr);
+
+    public FilletImageView(Context context, AttributeSet attr) {
+        super(context, attr);
     }
 
     @Override
@@ -27,7 +28,7 @@ public class FilletImageView extends AppCompatImageView {
         setOutlineProvider(new ViewOutlineProvider() {
             @Override
             public void getOutline(View view, Outline outline) {
-                outline.setRoundRect(0,0,getWidth(),getHeight(),12);
+                outline.setRoundRect(0, 0, getWidth(), getHeight(), 12);
             }
         });
         setClipToOutline(true);

@@ -25,7 +25,8 @@ import org.jetbrains.annotations.NotNull;
 public class GroupFilletImageView extends LinearLayout {
     private TypedArray ta;
     private GroupImageviewLayoutBinding mBing;
-    private int[]layoutId;
+    private int[] layoutId;
+
     public GroupFilletImageView(@NonNull @NotNull Context context) {
         super(context);
     }
@@ -33,7 +34,7 @@ public class GroupFilletImageView extends LinearLayout {
     public GroupFilletImageView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
 
-        ta = context.obtainStyledAttributes(attributeSet,R.styleable.GroupImageView);
+        ta = context.obtainStyledAttributes(attributeSet, R.styleable.GroupImageView);
 //        layoutId[0] = ta.getResourceId(R.styleable.GroupImageView_firstImageBg,
 //                R.mipmap.ic_launcher);
 //        layoutId[1] = ta.getResourceId(R.styleable.GroupImageView_secondImageBg,
@@ -56,10 +57,10 @@ public class GroupFilletImageView extends LinearLayout {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (mBing==null)
-            Log.d("mddd","mbing is null");
+        if (mBing == null)
+            Log.d("mddd", "mbing is null");
         else
-            Log.d("mddd","mbing is not null");
+            Log.d("mddd", "mbing is not null");
 //        mBing.secondImgIv.setBackgroundResource(layoutId[0]);
 //        mBing.thirdImgIv.setBackgroundResource(layoutId[0]);
 

@@ -13,9 +13,9 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
     public <T extends ViewModel> T create(@NonNull @NotNull Class<T> modelClass) {
         try {
             return modelClass.newInstance();
-        }catch (IllegalAccessException e){
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
-        }catch (InstantiationException e){
+        } catch (InstantiationException e) {
             e.printStackTrace();
         }
         return null;

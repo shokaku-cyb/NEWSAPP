@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -12,30 +11,30 @@
         android:layout_height="wrap_content">
 
         <com.maoyingjie.newapps.ui.CustomizeView.FilletImageView
-            android:background="@mipmap/newspaper"
             android:id="@+id/first_img_iv"
             android:layout_width="@dimen/sw_96dp"
             android:layout_height="@dimen/sw_54dp"
+            android:background="@mipmap/newspaper"
             app:layout_constraintEnd_toStartOf="@+id/second_img_iv"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.maoyingjie.newapps.ui.CustomizeView.FilletImageView
-            android:background="@mipmap/logo"
             android:id="@+id/second_img_iv"
             android:layout_width="@dimen/sw_96dp"
             android:layout_height="@dimen/sw_54dp"
+            android:background="@mipmap/logo"
             app:layout_constraintEnd_toStartOf="@+id/third_img_iv"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/first_img_iv"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.maoyingjie.newapps.ui.CustomizeView.FilletImageView
-            android:background="@mipmap/load"
             android:id="@+id/third_img_iv"
             android:layout_width="@dimen/sw_96dp"
             android:layout_height="@dimen/sw_54dp"
+            android:background="@mipmap/load"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/second_img_iv"

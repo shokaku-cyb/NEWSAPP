@@ -15,15 +15,16 @@ import okhttp3.Response;
 
 public class LogInterceptor implements Interceptor {
     private static final String TAG = "LogInterceptor";
+
     @Override
     public @NotNull Response intercept(@NotNull Chain chain) throws IOException {
         Request request = chain.request();
         okhttp3.Response response = chain.proceed(chain.request());
         okhttp3.MediaType mediaType = response.body().contentType();
         String content = response.body().string();
-        Log.d(TAG, "| "+request.toString());
-        String method=request.method();
-        if("POST".equals(method)){
+        Log.d(TAG, "| " + request.toString());
+        String method = request.method();
+        if ("POST".equals(method)) {
             StringBuilder sb = new StringBuilder();
             if (request.body() instanceof FormBody) {
                 FormBody body = (FormBody) request.body();
@@ -31,7 +32,7 @@ public class LogInterceptor implements Interceptor {
                     sb.append(body.encodedName(i) + "=" + body.encodedValue(i) + ",");
                 }
                 sb.delete(sb.length() - 1, sb.length());
-                Log.d(TAG, "| RequestParams:{"+sb.toString()+"}");
+                Log.d(TAG, "| RequestParams:{" + sb.toString() + "}");
             }
         }
         return response.newBuilder()

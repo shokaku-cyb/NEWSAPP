@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.maoyingjie.newapps.Utils.BindLife;
 
-public class BaseViewModel extends ViewModel implements BindLife {
+public abstract class BaseViewModel extends ViewModel implements BindLife {
 
     @Override
     public void bindlife() {
@@ -13,6 +13,7 @@ public class BaseViewModel extends ViewModel implements BindLife {
 
     @Override
     protected void onCleared() {
+
         super.onCleared();
     }
 }

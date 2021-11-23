@@ -6,10 +6,12 @@ import android.util.TimeUtils;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.gson.Gson;
 import com.maoyingjie.newapps.R;
 import com.maoyingjie.newapps.ViewModel.AdvertisementViewModel;
+import com.maoyingjie.newapps.ViewModel.Factory.ViewModelFactory;
 import com.maoyingjie.newapps.databinding.ActivityAdvertisementBinding;
 import com.maoyingjie.newapps.databinding.ActivityMainBinding;
 import com.maoyingjie.newapps.ViewModel.MainViewModel;
@@ -32,7 +34,8 @@ public class AdvertisementActivity extends BaseActivity<ActivityAdvertisementBin
 
     @Override
     public ViewModel getViewModel() {
-        return null;
+        return new ViewModelProvider(this,
+                new ViewModelFactory()).get(AdvertisementViewModel.class);
     }
 
     @Override

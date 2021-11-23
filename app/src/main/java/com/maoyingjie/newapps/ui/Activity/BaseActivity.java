@@ -36,6 +36,7 @@ public abstract class BaseActivity<T extends ViewDataBinding,
     }
 
     public abstract ViewModel getViewModel();
+
     public abstract void initData();
 
     public abstract int bingLayout();

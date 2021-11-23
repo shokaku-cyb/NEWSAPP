@@ -1,49 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/sw_6dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-<com.maoyingjie.newapps.ui.CustomizeView.FilletImageView
-    android:background="@mipmap/load"
-    android:id="@+id/img_iv"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"
-    android:layout_width="@dimen/sw_108dp"
-    android:layout_height="0dp"/>
+    android:padding="@dimen/sw_6dp">
+
+    <com.maoyingjie.newapps.ui.CustomizeView.FilletImageView
+        android:id="@+id/img_iv"
+        android:layout_width="@dimen/sw_108dp"
+        android:layout_height="0dp"
+        android:background="@mipmap/load"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/first_title_tv"
         style="@style/first_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/sw_12dp"
+        android:text="@string/test_title1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/img_iv"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="@string/test_title1"
-        android:id="@+id/first_title_tv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.AppCompatTextView
-        android:layout_marginTop="@dimen/sw_12dp"
-        android:textColor="@color/search_hint_grey"
-        android:text="@string/test_title2"
-        android:textSize="@dimen/sw_14sp"
-        app:layout_constraintStart_toStartOf="@id/first_title_tv"
-        app:layout_constraintTop_toBottomOf="@id/first_title_tv"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:id="@+id/litter_title_tv"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"/>
-    <androidx.appcompat.widget.AppCompatTextView
-        android:drawableRight="@mipmap/voice"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sw_12dp"
+        android:text="@string/test_title2"
         android:textColor="@color/search_hint_grey"
-        android:text="@string/test_time"
         android:textSize="@dimen/sw_14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/first_title_tv"
+        app:layout_constraintTop_toBottomOf="@id/first_title_tv" />
+
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/item_time_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/sw_12dp"
         android:layout_marginEnd="@dimen/sw_6dp"
-        app:layout_constraintStart_toEndOf="@+id/litter_title_tv"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:drawableRight="@mipmap/voice"
+        android:text="@string/test_time"
+        android:textColor="@color/search_hint_grey"
+        android:textSize="@dimen/sw_14sp"
         app:layout_constraintBottom_toBottomOf="@id/litter_title_tv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/litter_title_tv" />
 </androidx.constraintlayout.widget.ConstraintLayout>
