@@ -24,8 +24,8 @@ public class MainViewModel extends BaseViewModel {
 
     public void getmess(){
         apiService.getHeadline()
-                .observeOn(Schedulers.io())
-                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .doOnSuccess(new Consumer<TouTiaoBean>() {
                     @Override
                     public void accept(TouTiaoBean touTiaoBean) throws Exception {
@@ -38,7 +38,6 @@ public class MainViewModel extends BaseViewModel {
 
                     }
                 })
-                .subscribe()
-                .dispose();
+                .subscribe();
     }
 }

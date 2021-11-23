@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.maoyingjie.newapps.Utils.BindLife;
 
-public abstract class BaseViewModel extends ViewModel implements BindLife {
+public class BaseViewModel extends ViewModel implements BindLife {
 
     @Override
     public void bindlife() {

@@ -4,10 +4,15 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.databinding.DataBindingUtil;
 
 import com.bumptech.glide.Glide;
@@ -17,12 +22,11 @@ import com.maoyingjie.newapps.databinding.GroupImageviewLayoutBinding;
 
 import org.jetbrains.annotations.NotNull;
 
-public class GroupFilletImageView extends RelativeLayout {
+public class GroupFilletImageView extends LinearLayout {
     private TypedArray ta;
     private GroupImageviewLayoutBinding mBing;
-
+    private int[]layoutId;
     public GroupFilletImageView(@NonNull @NotNull Context context) {
-
         super(context);
     }
 
@@ -30,14 +34,19 @@ public class GroupFilletImageView extends RelativeLayout {
         super(context, attributeSet);
 
         ta = context.obtainStyledAttributes(attributeSet,R.styleable.GroupImageView);
-
+//        layoutId[0] = ta.getResourceId(R.styleable.GroupImageView_firstImageBg,
+//                R.mipmap.ic_launcher);
+//        layoutId[1] = ta.getResourceId(R.styleable.GroupImageView_secondImageBg,
+//                R.mipmap.ic_launcher);
+//        layoutId[2] = ta.getResourceId(R.styleable.GroupImageView_thirdImageBg,
+//                R.mipmap.ic_launcher);
         if (mBing == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService
                     (Context.LAYOUT_INFLATER_SERVICE);
             mBing = DataBindingUtil.inflate(inflater, R.layout.group_imageview_layout,
                     this, true);
         }
-
+        ta.recycle();
     }
 
     public GroupFilletImageView(Context context, AttributeSet attributeSet, int defStyleAttr) {
@@ -47,14 +56,13 @@ public class GroupFilletImageView extends RelativeLayout {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (ta!=null){
-            mBing.firstImgIv.setBackgroundResource(
-                    ta.getResourceId(R.styleable.GroupImageView_firstImageBg,R.mipmap.ic_launcher));
-            mBing.secondImgIv.setBackgroundResource(
-                    ta.getResourceId(R.styleable.GroupImageView_secondImageBg,R.mipmap.ic_launcher));
-            mBing.thirdImgIv.setBackgroundResource(
-                    ta.getResourceId(R.styleable.GroupImageView_thirdImageBg,R.mipmap.ic_launcher));
-        }
+        if (mBing==null)
+            Log.d("mddd","mbing is null");
+        else
+            Log.d("mddd","mbing is not null");
+//        mBing.secondImgIv.setBackgroundResource(layoutId[0]);
+//        mBing.thirdImgIv.setBackgroundResource(layoutId[0]);
+
     }
 
     public void BingImg(String... imgs) {

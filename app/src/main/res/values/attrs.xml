@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GroupImageView">
+        <attr name="firstImageBg" format="reference"/>
+        <attr name="secondImageBg" format="reference"/>
+        <attr name="thirdImageBg" format="reference"/>
+        <attr name="text" format="string"/>
+    </declare-styleable>
+</resources>

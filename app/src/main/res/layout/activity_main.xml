@@ -32,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"/>
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:background="@color/white"
             android:id="@+id/bottom_navigation_nv"
             app:itemTextColor="@color/search_hint_grey"
             app:layout_constraintBottom_toBottomOf="parent"

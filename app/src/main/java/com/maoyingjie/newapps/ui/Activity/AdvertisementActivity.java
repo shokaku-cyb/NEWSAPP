@@ -5,6 +5,7 @@ import android.util.Log;
 import android.util.TimeUtils;
 
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModel;
 
 import com.google.gson.Gson;
 import com.maoyingjie.newapps.R;
@@ -28,6 +29,11 @@ import io.reactivex.schedulers.Schedulers;
 
 public class AdvertisementActivity extends BaseActivity<ActivityAdvertisementBinding,
         AdvertisementViewModel> {
+
+    @Override
+    public ViewModel getViewModel() {
+        return null;
+    }
 
     @Override
     public void initData() {

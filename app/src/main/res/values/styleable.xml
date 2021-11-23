@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <declare-styleable name="GroupImageView">
-        <attr name="firstImageBg" format="reference|color"></attr>
-        <attr name="secondImageBg" format="reference|color"></attr>
-        <attr name="thirdImageBg" format="reference|color"></attr>
-    </declare-styleable>
-</resources>

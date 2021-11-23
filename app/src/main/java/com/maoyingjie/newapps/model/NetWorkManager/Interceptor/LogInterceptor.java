@@ -2,6 +2,8 @@ package com.maoyingjie.newapps.model.NetWorkManager.Interceptor;
 
 import android.util.Log;
 
+import com.google.gson.Gson;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;

@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelStoreOwner;
 
 import com.maoyingjie.newapps.ViewModel.BaseViewModel;
 import com.maoyingjie.newapps.ViewModel.Factory.ViewModelFactory;
+import com.maoyingjie.newapps.ViewModel.MainViewModel;
 
 public abstract class BaseActivity<T extends ViewDataBinding,
         Y extends ViewModel> extends AppCompatActivity implements ViewModelStoreOwner {
@@ -25,8 +26,7 @@ public abstract class BaseActivity<T extends ViewDataBinding,
         if (mBing == null)
             mBing = (T) DataBindingUtil.setContentView(this, bingLayout());
         if (mViewModel == null)
-            mViewModel = (Y) new ViewModelProvider(this,
-                    new ViewModelFactory()).get(BaseViewModel.class);
+            this.mViewModel = (Y) getViewModel();
     }
 
     @Override
@@ -35,6 +35,7 @@ public abstract class BaseActivity<T extends ViewDataBinding,
         initAnimation();
     }
 
+    public abstract ViewModel getViewModel();
     public abstract void initData();
 
     public abstract int bingLayout();
