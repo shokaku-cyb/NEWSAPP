@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_mess"
+        android:title="@string/navigation_message" />
+    <item
+        android:id="@+id/navigation_education"
+        android:title="@string/navigation_education" />
+    <item
+        android:id="@+id/navigation_video"
+        android:title="@string/navigation_video" />
+    <item
+        android:id="@+id/navigation_topic"
+        android:title="@string/navigation_topic" />
+    <item
+        android:id="@+id/navigation_mine"
+        android:title="@string/navigation_mine" />
+</menu>

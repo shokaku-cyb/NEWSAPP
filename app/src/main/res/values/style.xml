@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="first_title">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/sw_18sp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxEms">12</item>
+        <item name="android:inputType">textMultiLine</item>
+    </style>
+</resources>

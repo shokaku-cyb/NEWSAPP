@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="search_hint_content">请输入搜索内容</string>
+    <string name="navigation_message">资讯</string>
+    <string name="navigation_education">中教号</string>
+    <string name="navigation_video">视频</string>
+    <string name="navigation_topic">专题</string>
+    <string name="navigation_mine">我的</string>
+    <string name="test_title1">中国报刊社关于教育部党组巡视组</string>
+    <string name="test_title2">基础教育</string>
+    <string name="test_time">3-20 11:20</string>
+</resources>
