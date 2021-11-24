@@ -1,6 +1,8 @@
 package com.maoyingjie.newapps.ui.Activity;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +12,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
 
+import com.maoyingjie.newapps.Utils.StatusBarUtils;
 import com.maoyingjie.newapps.ViewModel.BaseViewModel;
 import com.maoyingjie.newapps.ViewModel.Factory.ViewModelFactory;
 import com.maoyingjie.newapps.ViewModel.MainViewModel;
@@ -22,11 +25,12 @@ public abstract class BaseActivity<T extends ViewDataBinding,
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initData();
         if (mBing == null)
             mBing = (T) DataBindingUtil.setContentView(this, bingLayout());
         if (mViewModel == null)
             this.mViewModel = (Y) getViewModel();
+        initData();
+        setStatusBar();
     }
 
     @Override
@@ -35,6 +39,13 @@ public abstract class BaseActivity<T extends ViewDataBinding,
         initAnimation();
     }
 
+    private void setStatusBar(){
+        if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.KITKAT)
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        mBing.getRoot().setPadding(0,
+                StatusBarUtils.getStatusBarHeight(this),0,0);
+
+    }
     public abstract ViewModel getViewModel();
 
     public abstract void initData();
