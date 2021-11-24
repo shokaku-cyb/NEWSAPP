@@ -21,26 +21,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_navigation_tl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/search_layout" />
-
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/content_vp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@id/bottom_navigation_nv"
-            app:layout_constraintTop_toBottomOf="@id/tab_navigation_tl" />
+            app:layout_constraintTop_toBottomOf="@id/search_layout" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            app:itemRippleColor="@color/search_hint_grey"
             android:id="@+id/bottom_navigation_nv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            app:itemTextColor="@color/search_hint_grey"
+            app:labelVisibilityMode="labeled"
+            app:itemTextColor="@color/selector_nv_textcolor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

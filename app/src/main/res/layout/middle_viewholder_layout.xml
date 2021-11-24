@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.maoyingjie.newapps.ui.CustomizeView.GroupFilletImageView
+    <com.maoyingjie.newapps.ui.CustomizeView.MGroupFilletImageView
         android:id="@+id/img_group_giv"
         android:layout_width="match_parent"
         android:layout_height="@dimen/sw_72dp"

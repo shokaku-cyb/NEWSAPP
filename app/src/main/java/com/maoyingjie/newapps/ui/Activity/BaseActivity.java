@@ -17,19 +17,19 @@ import com.maoyingjie.newapps.ViewModel.BaseViewModel;
 import com.maoyingjie.newapps.ViewModel.Factory.ViewModelFactory;
 import com.maoyingjie.newapps.ViewModel.MainViewModel;
 
-public abstract class BaseActivity<T extends ViewDataBinding,
-        Y extends ViewModel> extends AppCompatActivity implements ViewModelStoreOwner {
-    protected T mBing;
-    protected Y mViewModel;
+public abstract class BaseActivity<VD extends ViewDataBinding,
+        VM extends ViewModel> extends AppCompatActivity implements ViewModelStoreOwner {
+    protected VD mBing;
+    protected VM mViewModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (mBing == null)
-            mBing = (T) DataBindingUtil.setContentView(this, bingLayout());
+            mBing = (VD) DataBindingUtil.setContentView(this, bingLayout());
         if (mViewModel == null)
-            this.mViewModel = (Y) getViewModel();
-        initData();
+            this.mViewModel = (VM) getViewModel();
+        initView();
         setStatusBar();
     }
 
@@ -37,6 +37,7 @@ public abstract class BaseActivity<T extends ViewDataBinding,
     protected void onStart() {
         super.onStart();
         initAnimation();
+        initData();
     }
 
     private void setStatusBar(){
@@ -53,4 +54,6 @@ public abstract class BaseActivity<T extends ViewDataBinding,
     public abstract int bingLayout();
 
     public abstract void initAnimation();
+
+    public abstract void initView();
 }

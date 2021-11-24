@@ -54,6 +54,11 @@ public class AdvertisementActivity extends BaseActivity<ActivityAdvertisementBin
     }
 
     @Override
+    public void initView() {
+
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         Observable.interval(1, TimeUnit.SECONDS)

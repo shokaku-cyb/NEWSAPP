@@ -38,15 +38,16 @@
             tools:ignore="DuplicateIds,MissingConstraints">
 
             <androidx.appcompat.widget.AppCompatEditText
+                android:textSize="@dimen/sw_16sp"
                 android:maxLines="1"
                 android:focusable="false"
                 android:id="@+id/search_content_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/sw_12dp"
-                android:layout_marginTop="@dimen/sw_8dp"
+                android:layout_marginTop="@dimen/sw_4dp"
                 android:layout_marginRight="@dimen/sw_16dp"
-                android:layout_marginBottom="@dimen/sw_8dp"
+                android:layout_marginBottom="@dimen/sw_4dp"
                 android:background="@null"
                 android:drawableRight="@drawable/ic_baseline_search_24"
                 android:hint="@string/search_hint_content"

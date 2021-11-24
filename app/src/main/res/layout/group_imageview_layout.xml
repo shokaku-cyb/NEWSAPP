@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.maoyingjie.newapps.ui.CustomizeView.FilletImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/first_img_iv"
             android:layout_width="@dimen/sw_96dp"
             android:layout_height="@dimen/sw_54dp"
@@ -20,7 +20,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.maoyingjie.newapps.ui.CustomizeView.FilletImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/second_img_iv"
             android:layout_width="@dimen/sw_96dp"
             android:layout_height="@dimen/sw_54dp"
@@ -30,7 +30,7 @@
             app:layout_constraintStart_toEndOf="@+id/first_img_iv"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.maoyingjie.newapps.ui.CustomizeView.FilletImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/third_img_iv"
             android:layout_width="@dimen/sw_96dp"
             android:layout_height="@dimen/sw_54dp"

@@ -15,12 +15,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.maoyingjie.newapps.ui.CustomizeView.FilletImageView
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
         android:id="@+id/img_group_giv"
         android:layout_width="match_parent"
         android:layout_height="@dimen/sw_156dp"
         android:layout_margin="@dimen/sw_6dp"
         android:layout_marginTop="@dimen/sw_8dp"
-        android:background="@mipmap/load"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/first_title_tv" />

@@ -7,4 +7,15 @@
         <item name="android:maxEms">12</item>
         <item name="android:inputType">textMultiLine</item>
     </style>
+    <style name="TabLayoutTextSelected">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TabLayoutTextUnSelected">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/search_hint_grey</item>
+    </style>
 </resources>

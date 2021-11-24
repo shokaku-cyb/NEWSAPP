@@ -22,19 +22,19 @@ import com.maoyingjie.newapps.databinding.GroupImageviewLayoutBinding;
 
 import org.jetbrains.annotations.NotNull;
 
-public class GroupFilletImageView extends LinearLayout {
+public class MGroupFilletImageView extends LinearLayout {
     private TypedArray ta;
     private GroupImageviewLayoutBinding mBing;
     private int[] layoutId;
 
-    public GroupFilletImageView(@NonNull @NotNull Context context) {
+    public MGroupFilletImageView(@NonNull @NotNull Context context) {
         super(context);
     }
 
-    public GroupFilletImageView(Context context, AttributeSet attributeSet) {
+    public MGroupFilletImageView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
 
-        ta = context.obtainStyledAttributes(attributeSet, R.styleable.GroupImageView);
+//        ta = context.obtainStyledAttributes(attributeSet, R.styleable.GroupImageView);
 //        layoutId[0] = ta.getResourceId(R.styleable.GroupImageView_firstImageBg,
 //                R.mipmap.ic_launcher);
 //        layoutId[1] = ta.getResourceId(R.styleable.GroupImageView_secondImageBg,
@@ -47,10 +47,10 @@ public class GroupFilletImageView extends LinearLayout {
             mBing = DataBindingUtil.inflate(inflater, R.layout.group_imageview_layout,
                     this, true);
         }
-        ta.recycle();
+//        ta.recycle();
     }
 
-    public GroupFilletImageView(Context context, AttributeSet attributeSet, int defStyleAttr) {
+    public MGroupFilletImageView(Context context, AttributeSet attributeSet, int defStyleAttr) {
         super(context, attributeSet, defStyleAttr);
     }
 
