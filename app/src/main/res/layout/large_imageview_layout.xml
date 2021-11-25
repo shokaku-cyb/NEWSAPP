@@ -1,54 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/first_title_tv"
-        style="@style/first_title"
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/sw_6dp"
-        android:text="@string/test_title1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content">
 
-    <com.maoyingjie.newapps.ui.CustomizeView.FilletImageView
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY"
-        android:id="@+id/img_group_giv"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/sw_156dp"
-        android:layout_margin="@dimen/sw_6dp"
-        android:layout_marginTop="@dimen/sw_8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/first_title_tv" />
+        <androidx.appcompat.widget.AppCompatTextView
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/litter_title_tv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/sw_12dp"
-        android:text="@string/test_title2"
-        android:textColor="@color/search_hint_grey"
-        android:textSize="@dimen/sw_14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/first_title_tv"
-        app:layout_constraintTop_toBottomOf="@id/img_group_giv" />
+            android:layout_marginTop="@dimen/sw_18dp"
+            android:id="@+id/first_title_tv"
+            style="@style/first_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/test_title1"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/sw_12dp"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/item_time_tv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/sw_12dp"
-        android:layout_marginEnd="@dimen/sw_6dp"
-        android:drawableRight="@mipmap/voice"
-        android:text="@string/test_time"
-        android:textColor="@color/search_hint_grey"
-        android:textSize="@dimen/sw_14sp"
-        app:layout_constraintBottom_toBottomOf="@id/litter_title_tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/litter_title_tv" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.maoyingjie.newapps.ui.custom.FilletImageView
+            android:id="@+id/img_giv"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/sw_194dp"
+            android:layout_marginTop="@dimen/sw_8dp"
+            android:layout_marginStart="@dimen/sw_12dp"
+            android:layout_marginEnd="@dimen/sw_12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/first_title_tv" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_marginBottom="@dimen/sw_18dp"
+            android:id="@+id/litter_title_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_12dp"
+            android:text="@string/test_title2"
+            android:textColor="@color/search_hint_grey"
+            android:textSize="@dimen/sw_14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/first_title_tv"
+            app:layout_constraintTop_toBottomOf="@id/img_giv" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_time_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/sw_12dp"
+            android:layout_marginEnd="@dimen/sw_12dp"
+            android:drawableRight="@mipmap/voice"
+            android:text="@string/test_time"
+            android:textColor="@color/search_hint_grey"
+            android:textSize="@dimen/sw_14sp"
+            app:layout_constraintBottom_toBottomOf="@id/litter_title_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/litter_title_tv" />
+        <View
+            android:layout_marginStart="@dimen/sw_12dp"
+            android:layout_marginEnd="@dimen/sw_12dp"
+            android:background="@color/light_grey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

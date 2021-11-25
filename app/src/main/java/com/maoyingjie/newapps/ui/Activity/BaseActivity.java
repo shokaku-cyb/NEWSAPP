@@ -40,13 +40,14 @@ public abstract class BaseActivity<VD extends ViewDataBinding,
         initData();
     }
 
-    private void setStatusBar(){
-        if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.KITKAT)
+    private void setStatusBar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         mBing.getRoot().setPadding(0,
-                StatusBarUtils.getStatusBarHeight(this),0,0);
+                StatusBarUtils.getStatusBarHeight(this), 0, 0);
 
     }
+
     public abstract ViewModel getViewModel();
 
     public abstract void initData();

@@ -7,31 +7,28 @@ import com.maoyingjie.newapps.model.NetWorkManager.Http.HttpManager;
 import com.maoyingjie.newapps.model.NetWorkManager.bean.TouTiaoBean;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.BiConsumer;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-public class ListFragmentViewModel extends BaseViewModel{
+public class ListFragmentViewModel extends BaseViewModel {
     private HttpManager manager = HttpManager.getInstance();
     private ApiService apiService = manager.apiService;
 
     public MutableLiveData<TouTiaoBean> responseData = new MutableLiveData();
 
-    public void getmess() {
-        apiService.getHeadline()
+    public void getData() {
+        Disposable disposable = apiService.getHeadline()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnSuccess(new Consumer<TouTiaoBean>() {
-                    @Override
-                    public void accept(TouTiaoBean touTiaoBean) throws Exception {
-                        responseData.setValue(touTiaoBean);
-                    }
-                })
-                .doOnError(new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
+                .doOnSuccess(touTiaoBean -> responseData.setValue(touTiaoBean))
+                .doOnError(throwable -> {
 
-                    }
                 })
-                .subscribe();
+                .subscribe((touTiaoBean, throwable) -> {
+
+                });
+        compositeDisposable.add(disposable);
     }
 }

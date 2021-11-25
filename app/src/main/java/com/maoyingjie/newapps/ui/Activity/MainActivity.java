@@ -1,5 +1,6 @@
 package com.maoyingjie.newapps.ui.Activity;
 
+import android.content.ContentProvider;
 import android.util.Log;
 import android.view.MenuItem;
 
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -26,6 +28,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static androidx.viewpager2.widget.ViewPager2.*;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewModel> {
     private MFragmentStatusAdapter fragmentStatusAdapter;
@@ -59,13 +63,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     @Override
     protected void onResume() {
         super.onResume();
-//        mViewModel.getmess();
-//        mViewModel.responseData.observe(this, new Observer<TouTiaoBean>() {
-//            @Override
-//            public void onChanged(TouTiaoBean touTiaoBean) {
-//                Log.d("main", new Gson().toJson(touTiaoBean));
-//            }
-//        });
     }
 
     private void initViewPager2() {
@@ -76,7 +73,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         }
         mBing.contentVp.setAdapter(fragmentStatusAdapter);
 
-        mBing.contentVp.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+        mBing.contentVp.registerOnPageChangeCallback(new OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
@@ -86,25 +83,22 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         mBing.contentVp.setCurrentItem(0);
         mBing.contentVp.setUserInputEnabled(false);
 
-        mBing.bottomNavigationNv.setOnNavigationItemSelectedListener(new BottomNavigationView.
-                OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.navigation_mess:
-                        mBing.contentVp.setCurrentItem(0);
-                        break;
-                    case R.id.navigation_education:
-                        break;
-                    case R.id.navigation_mine:
-                        break;
-                    case R.id.navigation_topic:
-                        break;
-                    case R.id.navigation_video:
-                        break;
-                }
-                return true;
+        mBing.bottomNavigationNv.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.navigation_mess:
+                    mBing.contentVp.setCurrentItem(0);
+                    break;
+                case R.id.navigation_education:
+                    break;
+                case R.id.navigation_mine:
+                    break;
+                case R.id.navigation_topic:
+                    break;
+                case R.id.navigation_video:
+                    break;
             }
+            return true;
         });
     }
+
 }

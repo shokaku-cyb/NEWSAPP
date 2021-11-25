@@ -1,4 +1,4 @@
-package com.maoyingjie.newapps.ui.CustomizeView;
+package com.maoyingjie.newapps.ui.custom;
 
 import android.content.Context;
 import android.graphics.Canvas;

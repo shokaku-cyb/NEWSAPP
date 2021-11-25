@@ -10,10 +10,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class MFragmentStatusAdapter extends FragmentStateAdapter {
-    private List<Fragment>fragmentList;
+    private List<Fragment> fragmentList;
 
     public MFragmentStatusAdapter(@NonNull @NotNull FragmentActivity fragmentActivity,
-                                  List<Fragment>fragmentList) {
+                                  List<Fragment> fragmentList) {
         super(fragmentActivity);
         this.fragmentList = fragmentList;
     }

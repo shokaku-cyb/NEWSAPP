@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HttpManager {
     private static final String BASE_URL = "http://newapp.jyb.cn";
-    private static final int DAFAULT_TIMEOUT = 20;
+    private static final int DAFAULT_TIMEOUT = 6;
     private Retrofit mRetrofit;
     public ApiService apiService;
 

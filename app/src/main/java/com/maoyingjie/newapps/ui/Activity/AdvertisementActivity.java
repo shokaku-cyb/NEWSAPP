@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.util.Log;
 import android.util.TimeUtils;
 
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -22,16 +21,19 @@ import org.jetbrains.annotations.NotNull;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
+import io.reactivex.Observer;
 import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
+import io.reactivex.functions.BiConsumer;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 public class AdvertisementActivity extends BaseActivity<ActivityAdvertisementBinding,
         AdvertisementViewModel> {
-
+    private int count =3 ;
     @Override
     public ViewModel getViewModel() {
         return new ViewModelProvider(this,
@@ -61,24 +63,33 @@ public class AdvertisementActivity extends BaseActivity<ActivityAdvertisementBin
     @Override
     protected void onResume() {
         super.onResume();
-        Observable.interval(1, TimeUnit.SECONDS)
-                .takeUntil(it -> it == 3)
-                .doOnNext(new Consumer<Long>() {
+       Observable.interval(1, TimeUnit.SECONDS)
+               .take(count+1)
+               .map(aLong -> count-aLong)
+               .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Long>() {
                     @Override
-                    public void accept(Long aLong) throws Exception {
-                        Long leftTime = 3 - aLong;
-                        mBing.timeShowerTv.setText(leftTime.toString() + "秒");
+                    public void onSubscribe(@NotNull Disposable d) {
+
                     }
-                })
-                .doFinally(new Action() {
+
                     @Override
-                    public void run() throws Exception {
-                        startActivity(new Intent(AdvertisementActivity.this,
-                                MainActivity.class));
+                    public void onNext(@NotNull Long aLong) {
+                        mBing.timeShowerTv.setText(aLong.toString()+"秒");
+                    }
+
+                    @Override
+                    public void onError(@NotNull Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        startActivity(new Intent(AdvertisementActivity.
+                                this,MainActivity.class));
                         AdvertisementActivity.this.finish();
                     }
-                })
-                .subscribe();
+                });
 
     }
 }

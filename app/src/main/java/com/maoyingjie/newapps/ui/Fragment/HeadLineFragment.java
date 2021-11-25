@@ -20,6 +20,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.google.android.material.tabs.TabLayout.*;
+
 public class HeadLineFragment extends BaseFragment<FragmentHeadLineBinding,
         HeadLineFragmentViewModel> {
     private List<String> titleItem;
@@ -74,20 +76,17 @@ public class HeadLineFragment extends BaseFragment<FragmentHeadLineBinding,
         mBing.contentVp.setAdapter(fragmentStatusAdapter);
 
 
-        new TabLayoutMediator(mBing.tabNavigationTl, mBing.contentVp, new TabLayoutMediator.TabConfigurationStrategy() {
-            @Override
-            public void onConfigureTab(@NonNull @NotNull TabLayout.Tab tab, int position) {
-                TextView textView =(TextView) getTabView(position);
-                textView.setText(titleItem.get(position));
-                if (position==0)
-                    textView.setTextAppearance(getContext(), R.style.TabLayoutTextSelected);
-                tab.setCustomView(textView);
-            }
+        new TabLayoutMediator(mBing.tabNavigationTl, mBing.contentVp, (tab, position) -> {
+            TextView textView = (TextView) getTabView(position);
+            textView.setText(titleItem.get(position));
+            if (position == 0)
+                textView.setTextAppearance(getContext(), R.style.TabLayoutTextSelected);
+            tab.setCustomView(textView);
         }).attach();
 
-        mBing.tabNavigationTl.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        mBing.tabNavigationTl.addOnTabSelectedListener(new OnTabSelectedListener() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
+            public void onTabSelected(Tab tab) {
                 if (tab.getCustomView() == null)
                     tab.setCustomView(R.layout.tab_text_layout);
                 TextView textView = tab.getCustomView().findViewById(R.id.text1);
@@ -95,7 +94,7 @@ public class HeadLineFragment extends BaseFragment<FragmentHeadLineBinding,
             }
 
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
+            public void onTabUnselected(Tab tab) {
                 if (tab.getCustomView() == null)
                     tab.setCustomView(R.layout.tab_text_layout);
                 TextView textView = tab.getCustomView().findViewById(R.id.text1);
@@ -103,7 +102,7 @@ public class HeadLineFragment extends BaseFragment<FragmentHeadLineBinding,
             }
 
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {
+            public void onTabReselected(Tab tab) {
 
             }
         });

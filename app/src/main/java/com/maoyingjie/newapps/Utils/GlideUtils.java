@@ -5,14 +5,14 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.maoyingjie.newapps.App;
 import com.maoyingjie.newapps.R;
 
 public class GlideUtils {
 
-    public static void LoadImageWithDiskCacheStrategy(Context context,
-                                                      ImageView imageView,String img){
+    public static void LoadImageWithDiskCacheStrategy(ImageView imageView, String img) {
         Glide
-                .with(context)
+                .with(App.ApplicationContext())
                 .asBitmap()
                 .load(img)
                 .error(R.mipmap.logo)

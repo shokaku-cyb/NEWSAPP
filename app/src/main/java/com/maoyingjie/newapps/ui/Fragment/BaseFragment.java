@@ -22,6 +22,7 @@ public abstract class BaseFragment<T extends ViewDataBinding, Y extends BaseView
     protected T mBing;
     protected Y mViewModel;
     private boolean isLoaded = false;
+
     @Override
     public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +41,8 @@ public abstract class BaseFragment<T extends ViewDataBinding, Y extends BaseView
                              @Nullable @org.jetbrains.annotations.Nullable ViewGroup container,
                              @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         mBing = DataBindingUtil.inflate(inflater, bingLayout(), container, true);
-        if (mViewModel==null)
-            mViewModel = (Y)getViewModel();
+        if (mViewModel == null)
+            mViewModel = (Y) getViewModel();
         return mBing.getRoot();
     }
 
