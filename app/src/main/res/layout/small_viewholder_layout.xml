@@ -6,6 +6,8 @@
     android:padding="@dimen/sw_6dp">
 
     <com.maoyingjie.newapps.ui.CustomizeView.FilletImageView
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
         android:id="@+id/img_iv"
         android:layout_width="@dimen/sw_108dp"
         android:layout_height="0dp"

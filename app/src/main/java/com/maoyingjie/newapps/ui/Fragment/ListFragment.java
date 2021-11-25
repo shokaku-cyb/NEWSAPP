@@ -8,13 +8,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.maoyingjie.newapps.R;
 import com.maoyingjie.newapps.ViewModel.Factory.ViewModelFactory;
 import com.maoyingjie.newapps.ViewModel.ListFragmentViewModel;
-import com.maoyingjie.newapps.databinding.FragmentListBinding;
+import com.maoyingjie.newapps.databinding.FragmentHeadLineBinding;
+import com.maoyingjie.newapps.databinding.FragmentHeadlineListBinding;
 import com.maoyingjie.newapps.model.NetWorkManager.bean.TouTiaoBean;
 import com.maoyingjie.newapps.ui.Adapter.MultipleItemQuickAdapter;
 
-import java.util.ArrayList;
-
-public class ListFragment extends BaseFragment<FragmentListBinding, ListFragmentViewModel> {
+public class ListFragment extends BaseFragment<FragmentHeadlineListBinding, ListFragmentViewModel> {
     private MultipleItemQuickAdapter quickAdapter;
 
     @Override
@@ -46,7 +45,7 @@ public class ListFragment extends BaseFragment<FragmentListBinding, ListFragment
 
     @Override
     public int bingLayout() {
-        return R.layout.fragment_list;
+        return R.layout.fragment_headline_list;
     }
 
     @Override
