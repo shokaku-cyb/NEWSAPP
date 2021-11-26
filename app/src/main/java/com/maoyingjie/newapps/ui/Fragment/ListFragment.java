@@ -1,5 +1,10 @@
 package com.maoyingjie.newapps.ui.Fragment;
 
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
+
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,10 +15,12 @@ import com.maoyingjie.newapps.R;
 import com.maoyingjie.newapps.ViewModel.Factory.ViewModelFactory;
 import com.maoyingjie.newapps.ViewModel.ListFragmentViewModel;
 import com.maoyingjie.newapps.databinding.FragmentContentlistBinding;
+import com.maoyingjie.newapps.model.NetWorkManager.bean.TouTiaoBean;
 import com.maoyingjie.newapps.model.NetWorkManager.bean.TouTiaoBean.DocsDTO.ListDTO;
 import com.maoyingjie.newapps.ui.Adapter.ImageItemProvider;
 import com.maoyingjie.newapps.ui.Adapter.LargeImageItemProvider;
 import com.maoyingjie.newapps.ui.Adapter.MiddleImageItemProvider;
+import com.maoyingjie.newapps.ui.ViewState.StatefulData;
 
 import java.util.concurrent.TimeUnit;
 
@@ -27,20 +34,20 @@ public class ListFragment extends BaseFragment<FragmentContentlistBinding, ListF
     @Override
     public void initData() {
         mViewModel.getData();
-        mViewModel.responseData.observe(this, touTiaoBean -> {
-            if (adapter == null) {
-                createAdapter();
-                mBing.contentRv.setAdapter(adapter);
-                adapter.setItems(touTiaoBean.docs.list);
-            } else {
+        mViewModel.responseData.observe(this, data -> {
+            switch (data.state) {
+                case Error:
 
+                    break;
+                case Success:
+                    if (adapter == null) {
+                        createAdapter();
+                        adapter.setItems(data.data.docs.list);
+                    }
+                    mBing.contentRv.setAdapter(adapter);
+                    break;
             }
         });
-    }
-
-    @Override
-    public void init() {
-
     }
 
     @Override
@@ -58,6 +65,24 @@ public class ListFragment extends BaseFragment<FragmentContentlistBinding, ListF
     public void initView() {
         mBing.contentRv.setLayoutManager(new LinearLayoutManager(getContext()));
         mBing.refreshSrl.setOnRefreshListener(this);
+        mBing.checkNetworkCl.setOnClickListener(view -> mViewModel.getData());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mViewModel.isLoading.observe(this, aBoolean -> {
+            if (aBoolean)
+                showLoading(R.layout.loading_layout);
+            else
+                hideLoading();
+        });
+
+        mViewModel.isNetWorkAvailable.observe(this, aBoolean -> {
+            if (aBoolean)
+                mBing.checkNetworkCl.setVisibility(View.VISIBLE);
+            else mBing.checkNetworkCl.setVisibility(View.GONE);
+        });
     }
 
     @Override
@@ -78,7 +103,7 @@ public class ListFragment extends BaseFragment<FragmentContentlistBinding, ListF
                         new MiddleImageItemProvider(),
                         new LargeImageItemProvider())
                 .withJavaClassLinker((i, listDTO) -> {
-                    switch (listDTO.listStyle){
+                    switch (listDTO.listStyle) {
                         case "2":
                             return LargeImageItemProvider.class;
                         case "3":

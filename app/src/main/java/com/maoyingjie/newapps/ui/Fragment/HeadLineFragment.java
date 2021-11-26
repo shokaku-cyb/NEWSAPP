@@ -24,16 +24,12 @@ import static com.google.android.material.tabs.TabLayout.*;
 
 public class HeadLineFragment extends BaseFragment<FragmentHeadLineBinding,
         HeadLineFragmentViewModel> {
-    private List<String> titleItem;
+    public String[] title = new String[]{"头条", "要闻", "评论", "基教", "高教", "职教"};
     private MFragmentStatusAdapter fragmentStatusAdapter;
 
     @Override
     public void initData() {
 
-    }
-
-    @Override
-    public void init() {
     }
 
     @Override
@@ -54,17 +50,6 @@ public class HeadLineFragment extends BaseFragment<FragmentHeadLineBinding,
     }
 
     private void initViewPager2() {
-
-        if (titleItem == null || titleItem.size() == 0) {
-            titleItem = new ArrayList<>();
-            titleItem.add("头条");
-            titleItem.add("要闻");
-            titleItem.add("评论");
-            titleItem.add("基教");
-            titleItem.add("高教");
-            titleItem.add("职教");
-        }
-
         if (fragmentStatusAdapter == null) {
             List<Fragment> fragments = new ArrayList<>();
             fragments.add(new ListFragment());
@@ -78,7 +63,7 @@ public class HeadLineFragment extends BaseFragment<FragmentHeadLineBinding,
 
         new TabLayoutMediator(mBing.tabNavigationTl, mBing.contentVp, (tab, position) -> {
             TextView textView = (TextView) getTabView(position);
-            textView.setText(titleItem.get(position));
+            textView.setText(title[position]);
             if (position == 0)
                 textView.setTextAppearance(getContext(), R.style.TabLayoutTextSelected);
             tab.setCustomView(textView);
@@ -111,7 +96,7 @@ public class HeadLineFragment extends BaseFragment<FragmentHeadLineBinding,
     private View getTabView(int currentPosition) {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.tab_text_layout, null);
         TextView textView = (TextView) view.findViewById(R.id.text1);
-        textView.setText(titleItem.get(currentPosition));
+        textView.setText(title[currentPosition]);
         return view;
     }
 }

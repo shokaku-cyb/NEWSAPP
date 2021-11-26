@@ -1,36 +1,20 @@
 package com.maoyingjie.newapps.ui.Activity;
 
 import android.content.Intent;
-import android.util.Log;
-import android.util.TimeUtils;
 
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.google.gson.Gson;
 import com.maoyingjie.newapps.R;
 import com.maoyingjie.newapps.ViewModel.AdvertisementViewModel;
 import com.maoyingjie.newapps.ViewModel.Factory.ViewModelFactory;
 import com.maoyingjie.newapps.databinding.ActivityAdvertisementBinding;
-import com.maoyingjie.newapps.databinding.ActivityMainBinding;
-import com.maoyingjie.newapps.ViewModel.MainViewModel;
-import com.maoyingjie.newapps.model.NetWorkManager.bean.TouTiaoBean;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.Scheduler;
-import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Action;
-import io.reactivex.functions.BiConsumer;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
 
 public class AdvertisementActivity extends BaseActivity<ActivityAdvertisementBinding,
         AdvertisementViewModel> {

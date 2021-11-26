@@ -3,10 +3,13 @@ package com.maoyingjie.newapps.ui.custom;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Outline;
+import android.provider.ContactsContract;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewOutlineProvider;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -23,7 +26,7 @@ import java.util.List;
 public class MGroupFilletImageView extends LinearLayout {
     private GroupImageviewLayoutBinding mBing;
     private int radius = 8;
-
+    private ImageView[]imageViews;
     public MGroupFilletImageView(@NonNull @NotNull Context context) {
         super(context);
     }
@@ -50,46 +53,19 @@ public class MGroupFilletImageView extends LinearLayout {
     public void BingImg(List<String> imgs) {
         if (mBing == null)
             return;
-        if (imgs.get(0) != "" && imgs.get(0) != null)
-            GlideUtils.LoadImageWithDiskCacheStrategy(mBing.firstImgIv, imgs.get(0));
-
-        if (imgs.get(1) != "" && imgs.get(1) != null)
-            GlideUtils.LoadImageWithDiskCacheStrategy(mBing.secondImgIv, imgs.get(1));
-
-        if (imgs.get(2) != "" && imgs.get(2) != null)
-            GlideUtils.LoadImageWithDiskCacheStrategy(mBing.thirdImgIv, imgs.get(2));
-
-        CutFillet();
+        imageViews = new ImageView[]{mBing.firstImgIv,mBing.secondImgIv,mBing.thirdImgIv};
+        for (int i=0;i<imgs.size();i++){
+          if (!TextUtils.isEmpty(imgs.get(i))) {
+              GlideUtils.LoadImageWithDiskCacheStrategy(imageViews[i], imgs.get(0));
+              imageViews[i].setOutlineProvider(new ViewOutlineProvider() {
+                  @Override
+                  public void getOutline(View view, Outline outline) {
+                      outline.setRoundRect(0, 0, mBing.firstImgIv.getWidth(),
+                              mBing.firstImgIv.getHeight(), radius);
+                  }
+              });
+          }
+        }
     }
 
-    private void CutFillet() {
-        if (mBing == null)
-            return;
-        mBing.firstImgIv.setOutlineProvider(new ViewOutlineProvider() {
-            @Override
-            public void getOutline(View view, Outline outline) {
-                outline.setRoundRect(0, 0, mBing.firstImgIv.getWidth(),
-                        mBing.firstImgIv.getHeight(), radius);
-            }
-        });
-        mBing.firstImgIv.setClipToOutline(true);
-
-        mBing.secondImgIv.setOutlineProvider(new ViewOutlineProvider() {
-            @Override
-            public void getOutline(View view, Outline outline) {
-                outline.setRoundRect(0, 0, mBing.secondImgIv.getWidth(),
-                        mBing.secondImgIv.getHeight(), radius);
-            }
-        });
-        mBing.secondImgIv.setClipToOutline(true);
-
-        mBing.thirdImgIv.setOutlineProvider(new ViewOutlineProvider() {
-            @Override
-            public void getOutline(View view, Outline outline) {
-                outline.setRoundRect(0, 0, mBing.thirdImgIv.getWidth(),
-                        mBing.thirdImgIv.getHeight(), radius);
-            }
-        });
-        mBing.thirdImgIv.setClipToOutline(true);
-    }
 }

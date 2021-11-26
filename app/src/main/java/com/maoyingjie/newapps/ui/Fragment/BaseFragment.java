@@ -1,9 +1,12 @@
 package com.maoyingjie.newapps.ui.Fragment;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupWindow;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,11 +25,10 @@ public abstract class BaseFragment<T extends ViewDataBinding, Y extends BaseView
     protected T mBing;
     protected Y mViewModel;
     private boolean isLoaded = false;
-
+    private PopupWindow popupWindow;
     @Override
     public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        init();
     }
 
     @Override
@@ -67,9 +69,23 @@ public abstract class BaseFragment<T extends ViewDataBinding, Y extends BaseView
         isLoaded = false;
     }
 
-    public abstract void initData();
+    protected void showLoading(int layoutId){
+        LayoutInflater inflater  = LayoutInflater.from(getContext());
+        View view = inflater.inflate(layoutId,null);
+        popupWindow = new PopupWindow(getContext());
+        popupWindow.setBackgroundDrawable(new ColorDrawable(0));
+        popupWindow.setWidth(mBing.getRoot().getWidth());
+        popupWindow.setHeight(mBing.getRoot().getHeight());
+        popupWindow.setContentView(view);
+        popupWindow.showAtLocation(mBing.getRoot(),
+                Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL,0,0);
+    }
 
-    public abstract void init();
+    protected void hideLoading(){
+         if (popupWindow!=null)
+             popupWindow.dismiss();
+    }
+    public abstract void initData();
 
     public abstract ViewModel getViewModel();
 
