@@ -23,6 +23,7 @@ import java.util.concurrent.TimeUnit;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.Scheduler;
+import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
@@ -46,7 +47,7 @@ public class AdvertisementActivity extends BaseActivity<ActivityAdvertisementBin
 
     @Override
     public int bingLayout() {
-        return R.layout.activity_main;
+        return R.layout.activity_advertisement;
     }
 
 
@@ -63,33 +64,17 @@ public class AdvertisementActivity extends BaseActivity<ActivityAdvertisementBin
     @Override
     protected void onResume() {
         super.onResume();
-       Observable.interval(1, TimeUnit.SECONDS)
-               .take(count+1)
-               .map(aLong -> count-aLong)
+        Disposable disposable = Observable.intervalRange(0,4,0,1,
+                TimeUnit.SECONDS)
                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Long>() {
-                    @Override
-                    public void onSubscribe(@NotNull Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(@NotNull Long aLong) {
-                        mBing.timeShowerTv.setText(aLong.toString()+"秒");
-                    }
-
-                    @Override
-                    public void onError(@NotNull Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        startActivity(new Intent(AdvertisementActivity.
-                                this,MainActivity.class));
-                        AdvertisementActivity.this.finish();
-                    }
-                });
-
+               .map(aLong -> count-aLong)
+               .doOnNext(aLong -> mBing.timeShowerTv.setText(aLong.toString()+"秒"))
+               .doOnComplete(() -> {
+                   startActivity(new Intent(AdvertisementActivity.
+                           this,MainActivity.class));
+                   AdvertisementActivity.this.finish();
+               })
+               .subscribe();
+        compositeDisposable.add(disposable);
     }
 }

@@ -17,10 +17,14 @@ import com.maoyingjie.newapps.ViewModel.BaseViewModel;
 import com.maoyingjie.newapps.ViewModel.Factory.ViewModelFactory;
 import com.maoyingjie.newapps.ViewModel.MainViewModel;
 
+import io.reactivex.disposables.CompositeDisposable;
+
 public abstract class BaseActivity<VD extends ViewDataBinding,
         VM extends ViewModel> extends AppCompatActivity implements ViewModelStoreOwner {
     protected VD mBing;
     protected VM mViewModel;
+
+    protected CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,6 +50,12 @@ public abstract class BaseActivity<VD extends ViewDataBinding,
         mBing.getRoot().setPadding(0,
                 StatusBarUtils.getStatusBarHeight(this), 0, 0);
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        compositeDisposable.dispose();
     }
 
     public abstract ViewModel getViewModel();

@@ -14,8 +14,8 @@
         android:supportsRtl="true"
         android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/MyTheme">
-        <activity android:name=".ui.Activity.AdvertisementActivity"></activity>
-        <activity android:name=".ui.Activity.MainActivity" android:windowSoftInputMode="adjustPan">
+        <activity android:name=".ui.Activity.MainActivity"></activity>
+        <activity android:name=".ui.Activity.AdvertisementActivity" android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

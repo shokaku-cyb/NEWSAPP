@@ -14,7 +14,7 @@ public class App extends Application {
         super.onCreate();
         application = getApplicationContext();
         RxJavaPlugins.setErrorHandler(throwable -> {
-
+            throwable.printStackTrace();
         });
     }
 
